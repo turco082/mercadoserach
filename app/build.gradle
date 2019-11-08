@@ -1,0 +1,112 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion "29.0.2"
+    defaultConfig {
+        applicationId "com.edgar.mercadosearch"
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "MAIN_URL", "\"https://api.mercadolibre.com\"")
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    dataBinding {
+        enabled = true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+ext {
+    supportLibVersion = '28.0.0'  // variable that can be referenced to keep support libs consistent
+    mockitoVersion = '2.19.0'
+    jUnitVersion = '4.12'
+    mockitoKotlinVersion = '1.6.0'
+    assertjVersion = '1.7.1'
+    archVersion = '2.0.0-beta01'
+    tests = [
+            jUnit         : "junit:junit:${jUnitVersion}",
+            mockito       : "org.mockito:mockito-core:${mockitoVersion}",
+            mockitoInline : "org.mockito:mockito-inline:${mockitoVersion}",
+            mockitoAndroid: "org.mockito:mockito-android:${mockitoVersion}",
+            mokitoKotlin  : "com.nhaarman:mockito-kotlin:${mockitoKotlinVersion}",
+            assertj       : "org.assertj:assertj-core:${assertjVersion}",
+            archore       : "androidx.arch.core:core-testing:${archVersion}"
+    ]
+}
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'com.google.android.material:material:1.2.0-alpha01'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0-rc01'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.annotation:annotation:1.1.0'
+    implementation 'com.miguelcatalan:materialsearchview:1.4.0'
+    /*Dagger*/
+    implementation 'com.google.dagger:dagger:2.23.2'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.1.0'
+
+    kapt 'com.google.dagger:dagger-compiler:2.23.2'
+    implementation 'com.google.dagger:dagger-android-support:2.23.2'
+    kapt 'com.google.dagger:dagger-android-processor:2.23.2'
+    /*Retrofit lib*/
+    implementation 'com.squareup.retrofit2:retrofit:2.6.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.6.0'
+    /*okhttp*/
+    implementation 'com.squareup.okhttp3:okhttp:3.12.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.12.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.12.0'
+    /*Power preference*/
+    implementation 'com.aliassadi:power-preference-lib:1.4.1'
+    /*RxJava lib*/
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
+    kapt 'com.github.bumptech.glide:compiler:4.9.0'
+    /*LiveData lib*/
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0-rc01'
+    implementation 'androidx.lifecycle:lifecycle-runtime:2.2.0-rc01'
+    kapt 'androidx.lifecycle:lifecycle-compiler:2.2.0-rc01'
+    /*Room*/
+    implementation 'android.arch.persistence.room:runtime:1.1.1'
+    annotationProcessor 'android.arch.persistence.room:compiler:1.1.1'
+    /*circleimageview*/
+    implementation 'de.hdodenhof:circleimageview:3.0.0'
+    /*Keyboard Observer*/
+    implementation 'gun0912.ted:tedkeyboardobserver:1.0.0'
+
+    /*Material Popup Menu*/
+    implementation 'com.github.zawadz88.materialpopupmenu:material-popup-menu:3.2.0'
+
+    implementation 'info.androidhive:imagefilters:1.0.7'
+    //
+    implementation 'android.arch.work:work-runtime:1.0.1'
+    /*test*/
+    testImplementation tests.jUnit
+    testImplementation tests.mockito
+    testImplementation tests.archore
+    testImplementation(tests.mokitoKotlin) {
+        exclude group: "org.jetbrains.kotlin", module: "kotlin-stdlib"
+        exclude group: "org.jetbrains.kotlin", module: "kotlin-runtime"
+        exclude group: "org.jetbrains.kotlin", module: "kotlin-reflect"
+        exclude group: "org.mockito", module: "mockito-core"
+    }
+    androidTestImplementation 'androidx.test:runner:1.3.0-alpha02'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0-alpha02'
+    implementation 'com.google.android.gms:play-services-location:17.0.0'
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
+}

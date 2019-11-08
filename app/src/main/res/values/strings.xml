@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Mercado Search</string>
+
+    <string name="title_activity_spalsh">SpalshActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="loading">Cargando</string>
+    <string name="free_shipping">Envío gratis</string>
+    <string name="error_title">Error</string>
+    <string name="error_api">Algo a ocurrio en nuestra API, por favor intente nuevamente más tarde</string>
+    <string name="home_title">Buscar en Mercado Libre</string>
+    <string name="product">Producto</string>
+    <string name="search_init">Realiza una busqueda y encuentra el producto que estas buscando</string>
+    <string name="search_not_result">Parece que no tenemos resultado para tu busqueda</string>
+</resources>
