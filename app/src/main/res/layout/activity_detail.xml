@@ -80,8 +80,7 @@
             android:animateLayoutChanges="true"
             android:background="@android:color/black"
             android:orientation="vertical"
-            android:visibility="gone">
-            <!--android:visibility="@{viewModel.showLoader}"-->
+            android:visibility="@{viewModel.showLoader}">
 
             <ProgressBar
                 android:id="@+id/loading_view_pb"
